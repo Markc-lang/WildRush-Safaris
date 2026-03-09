@@ -7,14 +7,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --earth: #2c1a0e;
+    --earth: #633e25;
     --terracotta: #b85c2b;
     --amber: #d4892a;
     --gold: #c9a84c;
     --sand: #e8d5a3;
     --cream: #f5efe3;
     --sage: #4a5e45;
-    --deep-green: #1e3120;
+    --deep-green: #274b2a;
     --sky: #7da5b8;
     --white: #faf7f2;
   }
@@ -49,11 +49,11 @@
   .nav-logo span:first-child {
     font-family: 'Cormorant Garamond', serif;
     font-size: 22px; font-weight: 600; letter-spacing: 0.04em;
-    color: var(--gold);
+    color: var(--white);
   }
   .nav-logo span:last-child {
     font-size: 9px; font-weight: 300; letter-spacing: 0.25em;
-    text-transform: uppercase; color: var(--sand); margin-top: 3px;
+    text-transform: uppercase; color: var(--white); margin-top: 3px;
   }
   .nav-links {
     display: flex; gap: 36px; list-style: none;
@@ -365,13 +365,6 @@
   .packages-grid {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
   }
-  .packages-grid.grid-4 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  @keyframes pkgFadeIn {
-    from { opacity: 0; transform: translateY(16px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
   .pkg-card {
     background: var(--white);
     overflow: hidden;
@@ -454,7 +447,7 @@
   #experiences::before {
     content: '';
     position: absolute; inset: 0;
-    background: url('jones.jpg') center/cover no-repeat;
+    background: url('and.jpg') center/cover no-repeat;
     opacity: 0.08;
   }
   #experiences .section-tag { color: var(--gold); }
@@ -875,15 +868,15 @@
   </div>
   <div class="hero-stats">
     <div class="stat-item">
-      <div class="stat-num">...+</div>
+      <div class="stat-num">389+</div>
       <div class="stat-label">Guests Hosted</div>
     </div>
     <div class="stat-item">
-      <div class="stat-num">..+</div>
+      <div class="stat-num">6+</div>
       <div class="stat-label">Years Experience</div>
     </div>
     <div class="stat-item">
-      <div class="stat-num">48</div>
+      <div class="stat-num">29</div>
       <div class="stat-label">Safari Vehicles</div>
     </div>
     <div class="stat-item">
@@ -922,13 +915,13 @@
     <div class="intro-grid">
       <div class="intro-images">
         <img class="intro-img-main"
-          src="https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=900&q=80"
+          src="lionee.JPG"
           alt="Serengeti safari" loading="lazy">
         <img class="intro-img-secondary"
-          src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=80"
+          src="leo.jpg"
           alt="African wildlife" loading="lazy">
         <div class="intro-badge">
-          <span>9+</span>
+          <span>6+</span>
           <span>Years of<br>Wild Journeys</span>
         </div>
       </div>
@@ -942,7 +935,7 @@
             <div class="feat-icon">🚙</div>
             <div>
               <div class="feat-label">Own Fleet</div>
-              <div class="feat-desc">48 custom Land Cruisers, window seat guaranteed</div>
+              <div class="feat-desc">29 custom Land Cruisers, window seat guaranteed</div>
             </div>
           </div>
           <div class="intro-feat">
@@ -987,7 +980,7 @@
     </div>
     <div class="dest-grid">
       <div class="dest-card">
-        <img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=900&q=80" alt="Serengeti">
+        <img src="wildebeest.jpg" alt="Serengeti">
         <div class="dest-overlay">
           <div class="dest-tag">Northern Circuit</div>
           <div class="dest-name">Serengeti National Park</div>
@@ -1045,9 +1038,7 @@
         <button class="pkg-tab" data-filter="luxury">Luxury</button>
       </div>
     </div>
-    <div class="packages-grid grid-4" id="packagesGrid">
-
-      <!-- ══ ALL SAFARIS (4 cards) ══ -->
+    <div class="packages-grid" id="packagesGrid">
 
       <!-- ALL · Card 1 -->
       <div class="pkg-card" data-tab="all">
@@ -1071,7 +1062,7 @@
 
       <!-- ALL · Card 2 FEATURED -->
       <div class="pkg-card featured" data-tab="all">
-        <img class="pkg-img" src="https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=700&q=80" alt="Great Migration" loading="lazy">
+        <img class="pkg-img" src="wildebeest.jpg" alt="Great Migration" loading="lazy">
         <div class="pkg-body">
           <div class="pkg-duration">10 Days · 9 Nights · ⭐ Most Popular</div>
           <h3 class="pkg-title">The Great Migration Expedition</h3>
@@ -1110,7 +1101,7 @@
         </div>
       </div>
 
-      <!-- ALL · Card 4 — Kilimanjaro (NEW) -->
+      <!-- ALL · Card 4 — Kilimanjaro -->
       <div class="pkg-card" data-tab="all">
         <img class="pkg-img" src="https://images.unsplash.com/photo-1609198273453-5cf35b7b9ba6?w=700&q=80" alt="Kilimanjaro Climb" loading="lazy">
         <div class="pkg-body">
@@ -1130,10 +1121,8 @@
         </div>
       </div>
 
-      <!-- ══ SHORT TRIPS (3 cards) ══ -->
-
       <!-- SHORT · Card 1 -->
-      <div class="pkg-card pkg-hidden" data-tab="short">
+      <div class="pkg-card" data-tab="short" style="display:none">
         <img class="pkg-img" src="https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=700&q=80" alt="Ngorongoro Escape" loading="lazy">
         <div class="pkg-body">
           <div class="pkg-duration">3 Days · 2 Nights</div>
@@ -1153,7 +1142,7 @@
       </div>
 
       <!-- SHORT · Card 2 FEATURED -->
-      <div class="pkg-card featured pkg-hidden" data-tab="short">
+      <div class="pkg-card featured" data-tab="short" style="display:none">
         <img class="pkg-img" src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=700&q=80" alt="Tarangire Express" loading="lazy">
         <div class="pkg-body">
           <div class="pkg-duration">4 Days · 3 Nights · ⭐ Best Value</div>
@@ -1173,7 +1162,7 @@
       </div>
 
       <!-- SHORT · Card 3 -->
-      <div class="pkg-card pkg-hidden" data-tab="short">
+      <div class="pkg-card" data-tab="short" style="display:none">
         <img class="pkg-img" src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=700&q=80" alt="Serengeti Weekend" loading="lazy">
         <div class="pkg-body">
           <div class="pkg-duration">3 Days · 2 Nights</div>
@@ -1192,10 +1181,8 @@
         </div>
       </div>
 
-      <!-- ══ CLASSIC (3 cards) ══ -->
-
       <!-- CLASSIC · Card 1 -->
-      <div class="pkg-card pkg-hidden" data-tab="classic">
+      <div class="pkg-card" data-tab="classic" style="display:none">
         <img class="pkg-img" src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=700&q=80" alt="Northern Circuit" loading="lazy">
         <div class="pkg-body">
           <div class="pkg-duration">7 Days · 6 Nights</div>
@@ -1215,7 +1202,7 @@
       </div>
 
       <!-- CLASSIC · Card 2 FEATURED -->
-      <div class="pkg-card featured pkg-hidden" data-tab="classic">
+      <div class="pkg-card featured" data-tab="classic" style="display:none">
         <img class="pkg-img" src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=700&q=80" alt="Wildlife and Culture" loading="lazy">
         <div class="pkg-body">
           <div class="pkg-duration">5 Days · 4 Nights · ⭐ Top Pick</div>
@@ -1235,7 +1222,7 @@
       </div>
 
       <!-- CLASSIC · Card 3 -->
-      <div class="pkg-card pkg-hidden" data-tab="classic">
+      <div class="pkg-card" data-tab="classic" style="display:none">
         <img class="pkg-img" src="https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=700&q=80" alt="Great Rift Valley" loading="lazy">
         <div class="pkg-body">
           <div class="pkg-duration">8 Days · 7 Nights</div>
@@ -1254,10 +1241,8 @@
         </div>
       </div>
 
-      <!-- ══ LUXURY (3 cards) ══ -->
-
       <!-- LUXURY · Card 1 FEATURED -->
-      <div class="pkg-card featured pkg-hidden" data-tab="luxury">
+      <div class="pkg-card featured" data-tab="luxury" style="display:none">
         <img class="pkg-img" src="https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=700&q=80" alt="Private Migration Camp" loading="lazy">
         <div class="pkg-body">
           <div class="pkg-duration">10 Days · 9 Nights · ⭐ Signature</div>
@@ -1278,7 +1263,7 @@
       </div>
 
       <!-- LUXURY · Card 2 -->
-      <div class="pkg-card pkg-hidden" data-tab="luxury">
+      <div class="pkg-card" data-tab="luxury" style="display:none">
         <img class="pkg-img" src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=700&q=80" alt="Fly-In Serengeti" loading="lazy">
         <div class="pkg-body">
           <div class="pkg-duration">7 Days · 6 Nights</div>
@@ -1298,12 +1283,12 @@
       </div>
 
       <!-- LUXURY · Card 3 -->
-      <div class="pkg-card pkg-hidden" data-tab="luxury">
+      <div class="pkg-card" data-tab="luxury" style="display:none">
         <img class="pkg-img" src="zanzibar 3.jpg" alt="Ultimate Tanzania" loading="lazy">
         <div class="pkg-body">
           <div class="pkg-duration">14 Days · 13 Nights</div>
           <h3 class="pkg-title">Ultimate Tanzania Grand Tour</h3>
-          <p class="pkg-desc">The definitive Tanzania journey. Kilimanjaro foothills, the northern safari circuit, the Great Migration, and five nights at an overwater Zanzibar villa — all in one extraordinary fortnight.</p>
+          <p class="pkg-desc">The definitive Tanzania journey. Kilimanjaro foothills, the full northern circuit, the Great Migration, and five nights at an overwater Zanzibar villa — all in one extraordinary fortnight.</p>
           <ul class="pkg-highlights">
             <li>Full northern circuit: 4 parks</li>
             <li>Migration camp (3 nights)</li>
@@ -1318,7 +1303,7 @@
         </div>
       </div>
 
-    </div><!-- /packages-grid -->
+    </div>
   </div>
 </section>
 
@@ -1391,10 +1376,10 @@
     <div class="why-grid">
       <div class="why-img-stack">
         <img class="why-img-1"
-          src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=800&q=80"
+          src="and.jpg"
           alt="Safari guide" loading="lazy">
         <img class="why-img-2"
-          src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=500&q=80"
+          src="crater5.jpeg"
           alt="Wildlife" loading="lazy">
         <div class="why-quote">"Not just a trip — a chapter of your life."</div>
       </div>
@@ -1435,35 +1420,6 @@
 </section>
 
 <!-- TESTIMONIALS -->
-<section id="testimonials">
-  <div class="container">
-    <div class="section-tag">Real Stories</div>
-    <h2 class="section-title">What Our Guests<br><em>Say</em></h2>
-    <div class="testi-grid">
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"Witnessing the Great Migration from our balloon was otherworldly. Our guide, Emmanuel, had a gift for finding the animals and making us feel completely safe in the wild."</p>
-        <div class="testi-author">Sarah & Tom Wentworth</div>
-        <div class="testi-origin">London, United Kingdom</div>
-        <div class="testi-tour">Great Migration Expedition · August 2024</div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"From the moment we landed in Kilimanjaro, WildRush Safaris took care of everything. The Ngorongoro crater descent was the single most spectacular thing I have ever seen."</p>
-        <div class="testi-author">Marco & Giulia Ferrara</div>
-        <div class="testi-origin">Milan, Italy</div>
-        <div class="testi-tour">Serengeti Classic Safari · June 2024</div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"We came back a different family. Five nights in the bush, then five days in Zanzibar — our kids are still talking about it six months later. This company is the real deal."</p>
-        <div class="testi-author">The Nakamura Family</div>
-        <div class="testi-origin">Tokyo, Japan</div>
-        <div class="testi-tour">Bush & Beach Package · December 2024</div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ZANZIBAR STRIP -->
 <section id="zanzibar">
@@ -1624,89 +1580,88 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" onerror="void(0)"></script>
 <script>
-  // Nav scroll effect
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 60);
-  });
+(function() {
+  function init() {
 
-  // Package tab filtering — direct style manipulation
-  function initTabs() {
-    var tabs = document.querySelectorAll('.pkg-tab');
-    var grid = document.getElementById('packagesGrid');
-    if (!grid) return;
-
-    function showTab(filter) {
-      var cards = grid.querySelectorAll('.pkg-card');
-      cards.forEach(function(card) {
-        if (card.getAttribute('data-tab') === filter) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
+    // Nav scroll effect
+    var navbar = document.getElementById('navbar');
+    if (navbar) {
+      window.addEventListener('scroll', function() {
+        navbar.classList.toggle('scrolled', window.scrollY > 60);
       });
-      if (filter === 'all') {
-        grid.style.gridTemplateColumns = 'repeat(2, 1fr)';
-      } else {
-        grid.style.gridTemplateColumns = 'repeat(3, 1fr)';
-      }
     }
 
-    tabs.forEach(function(tab) {
-      tab.addEventListener('click', function() {
-        tabs.forEach(function(t) { t.classList.remove('active'); });
-        this.classList.add('active');
-        showTab(this.getAttribute('data-filter'));
+    // Package tab filtering
+    var tabs = document.querySelectorAll('.pkg-tab');
+    var grid = document.getElementById('packagesGrid');
+
+    if (grid && tabs.length) {
+      function showTab(filter) {
+        var cards = grid.querySelectorAll('.pkg-card');
+        cards.forEach(function(card) {
+          card.style.display = (card.getAttribute('data-tab') === filter) ? 'flex' : 'none';
+        });
+        grid.style.gridTemplateColumns = (filter === 'all') ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)';
+      }
+
+      tabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+          tabs.forEach(function(t) { t.classList.remove('active'); });
+          this.classList.add('active');
+          showTab(this.getAttribute('data-filter'));
+        });
+      });
+
+      showTab('all');
+    }
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+      anchor.addEventListener('click', function(e) {
+        var target = document.querySelector(this.getAttribute('href'));
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
       });
     });
 
-    // Set initial state
-    showTab('all');
+    // Intersection observer fade-in (pkg-cards excluded)
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.dest-card, .testi-card, .exp-card, .why-item').forEach(function(el) {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+      });
+    }
+
+    // Form submit feedback
+    var formBtn = document.querySelector('.form-submit');
+    if (formBtn) {
+      formBtn.addEventListener('click', function() {
+        this.textContent = 'Enquiry Sent ✓';
+        this.style.background = '#4a5e45';
+        var btn = this;
+        setTimeout(function() { btn.textContent = 'Send My Enquiry →'; btn.style.background = ''; }, 3000);
+      });
+    }
   }
 
-  document.addEventListener('DOMContentLoaded', initTabs);
-  if (document.readyState !== 'loading') initTabs();
-
-  // Smooth scroll for nav links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
-    });
-  });
-
-  // Intersection observer for fade-in (pkg-cards excluded)
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.dest-card, .testi-card, .exp-card, .why-item').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
-  });
-
-  // Form submit feedback
-  const formBtn = document.querySelector('.form-submit');
-  if (formBtn) {
-    formBtn.addEventListener('click', function() {
-      this.textContent = 'Enquiry Sent ✓';
-      this.style.background = '#4a5e45';
-      setTimeout(() => {
-        this.textContent = 'Send My Enquiry →';
-        this.style.background = '';
-      }, 3000);
-    });
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
   }
+})();
 </script>
+</body>
+</html>
