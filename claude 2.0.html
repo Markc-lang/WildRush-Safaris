@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WildRush Safaris | Tanzania's Premier Safari Experience</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --earth: #2c1a0e;
+    --terracotta: #b85c2b;
+    --amber: #d4892a;
+    --gold: #c9a84c;
+    --sand: #e8d5a3;
+    --cream: #f5efe3;
+    --sage: #4a5e45;
+    --deep-green: #1e3120;
+    --sky: #7da5b8;
+    --white: #faf7f2;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--white);
+    color: var(--earth);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 24px 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: all 0.5s ease;
+  }
+  nav.scrolled {
+    background: rgba(44,26,14,0.96);
+    backdrop-filter: blur(12px);
+    padding: 16px 60px;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+  }
+  .nav-logo {
+    display: flex; flex-direction: column; line-height: 1;
+  }
+  .nav-logo span:first-child {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 600; letter-spacing: 0.04em;
+    color: var(--gold);
+  }
+  .nav-logo span:last-child {
+    font-size: 9px; font-weight: 300; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--sand); margin-top: 3px;
+  }
+  .nav-links {
+    display: flex; gap: 36px; list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none; color: var(--cream);
+    font-size: 11px; font-weight: 400; letter-spacing: 0.2em;
+    text-transform: uppercase;
+    position: relative; padding-bottom: 4px;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 0; height: 1px; background: var(--gold);
+    transition: width 0.3s ease;
+  }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-cta {
+    padding: 10px 24px;
+    border: 1px solid var(--gold);
+    color: var(--gold); text-decoration: none;
+    font-size: 11px; font-weight: 400; letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--earth); }
+
+  /* ── HERO ── */
+  #hero {
+    height: 100vh; position: relative;
+    display: flex; flex-direction: column;
+    justify-content: center; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: 
+      linear-gradient(180deg, rgba(44,26,14,0.2) 0%, rgba(44,26,14,0.1) 40%, rgba(44,26,14,0.7) 100%),
+      url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1800&q=80') center/cover no-repeat;
+    animation: heroZoom 18s ease-in-out infinite alternate;
+  }
+  @keyframes heroZoom {
+    from { transform: scale(1); }
+    to   { transform: scale(1.06); }
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 120px 80px 160px;
+    max-width: 900px;
+  }
+  .hero-eyebrow {
+    font-size: 10px; font-weight: 300; letter-spacing: 0.4em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 20px;
+    animation: fadeUp 1s ease 0.3s both;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 8vw, 96px);
+    font-weight: 300; line-height: 1.0;
+    color: var(--white);
+    animation: fadeUp 1s ease 0.5s both;
+  }
+  .hero-title em {
+    font-style: italic; color: var(--gold);
+  }
+  .hero-sub {
+    font-size: 14px; font-weight: 300; letter-spacing: 0.1em;
+    color: var(--sand); margin-top: 24px; max-width: 480px; line-height: 1.8;
+    animation: fadeUp 1s ease 0.7s both;
+  }
+  .hero-actions {
+    display: flex; gap: 16px; margin-top: 40px;
+    animation: fadeUp 1s ease 0.9s both;
+  }
+  .btn-primary {
+    padding: 14px 36px;
+    background: var(--terracotta);
+    color: var(--white); text-decoration: none;
+    font-size: 11px; font-weight: 400; letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    border: 2px solid var(--terracotta);
+  }
+  .btn-primary:hover { background: transparent; color: var(--white); }
+  .btn-ghost {
+    padding: 14px 36px;
+    border: 1px solid rgba(255,255,255,0.5);
+    color: var(--white); text-decoration: none;
+    font-size: 11px; font-weight: 300; letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+  }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-scroll {
+    position: absolute; bottom: 40px; right: 80px;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    z-index: 2;
+    animation: fadeUp 1s ease 1.2s both;
+  }
+  .hero-scroll span {
+    font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--sand); writing-mode: vertical-rl;
+  }
+  .scroll-line {
+    width: 1px; height: 60px; background: var(--gold);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%,100% { opacity: 0.3; transform: scaleY(0.6); }
+    50%      { opacity: 1;   transform: scaleY(1); }
+  }
+  /* Hero stat bar */
+  .hero-stats {
+    position: absolute; bottom: 0; right: 0; left: 0; z-index: 3;
+    background: rgba(44,26,14,0.85);
+    backdrop-filter: blur(16px);
+    display: flex; justify-content: center;
+    border-top: 1px solid rgba(201,168,76,0.2);
+  }
+  .stat-item {
+    padding: 20px 60px; text-align: center;
+    border-right: 1px solid rgba(201,168,76,0.15);
+    flex: 1; max-width: 200px;
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px; font-weight: 500; color: var(--gold);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--sand); margin-top: 6px; font-weight: 300;
+  }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 100px 0; }
+  .section-tag {
+    font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase;
+    color: var(--terracotta); font-weight: 400;
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 16px;
+  }
+  .section-tag::before {
+    content: ''; width: 32px; height: 1px; background: var(--terracotta);
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 300; line-height: 1.15;
+    color: var(--earth);
+  }
+  .section-title em { font-style: italic; color: var(--terracotta); }
+  .container { max-width: 1300px; margin: 0 auto; padding: 0 60px; }
+
+  /* ── INTRO ── */
+  #intro { background: var(--white); overflow: hidden; }
+  .intro-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 100px; align-items: center;
+  }
+  .intro-images {
+    position: relative; height: 620px;
+  }
+  .intro-img-main {
+    position: absolute; top: 0; left: 0;
+    width: 75%; height: 80%;
+    object-fit: cover;
+    box-shadow: 20px 20px 60px rgba(44,26,14,0.2);
+  }
+  .intro-img-secondary {
+    position: absolute; bottom: 0; right: 0;
+    width: 55%; height: 55%;
+    object-fit: cover;
+    border: 6px solid var(--white);
+    box-shadow: 10px 10px 40px rgba(44,26,14,0.2);
+  }
+  .intro-badge {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    width: 120px; height: 120px;
+    background: var(--terracotta);
+    border-radius: 50%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    z-index: 2;
+    box-shadow: 0 0 0 8px var(--white), 0 0 0 10px rgba(184,92,43,0.3);
+  }
+  .intro-badge span:first-child {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 600; color: var(--white); line-height: 1;
+  }
+  .intro-badge span:last-child {
+    font-size: 8px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(255,255,255,0.8); font-weight: 300;
+  }
+  .intro-text p {
+    font-size: 15px; font-weight: 300; line-height: 1.9;
+    color: #5a4030; margin-top: 24px;
+  }
+  .intro-features {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 40px;
+  }
+  .intro-feat {
+    display: flex; align-items: flex-start; gap: 14px;
+  }
+  .feat-icon {
+    width: 40px; height: 40px; min-width: 40px;
+    background: var(--cream);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+  .feat-label {
+    font-size: 12px; font-weight: 500; letter-spacing: 0.05em;
+    color: var(--earth); text-transform: uppercase; margin-top: 2px;
+  }
+  .feat-desc {
+    font-size: 12px; font-weight: 300; color: #7a5a3a; margin-top: 3px; line-height: 1.6;
+  }
+
+  /* ── DESTINATIONS ── */
+  #destinations { background: var(--earth); padding: 100px 0; }
+  #destinations .section-tag { color: var(--gold); }
+  #destinations .section-tag::before { background: var(--gold); }
+  #destinations .section-title { color: var(--cream); }
+  #destinations .section-title em { color: var(--gold); }
+  .dest-intro-text {
+    font-size: 14px; font-weight: 300; color: var(--sand); line-height: 1.8;
+    max-width: 500px; margin-top: 20px;
+  }
+  .dest-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 60px;
+  }
+  .dest-scroll-hint {
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(201,168,76,0.6); display: flex; align-items: center; gap: 8px;
+  }
+  .dest-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 3px;
+    height: 600px;
+  }
+  .dest-card {
+    position: relative; overflow: hidden; cursor: pointer;
+  }
+  .dest-card:first-child { grid-row: 1 / 3; }
+  .dest-card img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.7s ease;
+  }
+  .dest-card:hover img { transform: scale(1.07); }
+  .dest-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(20,10,5,0.85) 100%);
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 28px;
+    transition: background 0.4s ease;
+  }
+  .dest-card:hover .dest-overlay {
+    background: linear-gradient(180deg, transparent 10%, rgba(20,10,5,0.9) 100%);
+  }
+  .dest-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 400; color: var(--white);
+  }
+  .dest-desc {
+    font-size: 11px; font-weight: 300; color: rgba(255,255,255,0.75);
+    margin-top: 6px; line-height: 1.6;
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+  .dest-card:hover .dest-desc { max-height: 60px; }
+  .dest-tag {
+    font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); font-weight: 400; margin-bottom: 8px;
+  }
+
+  /* ── SAFARI PACKAGES ── */
+  #packages { background: var(--cream); }
+  .pkg-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 60px;
+  }
+  .pkg-tabs {
+    display: flex; gap: 4px;
+  }
+  .pkg-tab {
+    padding: 8px 20px;
+    font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+    border: 1px solid rgba(44,26,14,0.2);
+    cursor: pointer; background: transparent;
+    color: var(--earth); font-family: 'Jost', sans-serif;
+    transition: all 0.3s ease;
+  }
+  .pkg-tab.active, .pkg-tab:hover {
+    background: var(--earth); color: var(--cream);
+  }
+  .packages-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  .pkg-card {
+    background: var(--white);
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .pkg-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 24px 60px rgba(44,26,14,0.15);
+  }
+  .pkg-card.featured {
+    background: var(--earth);
+  }
+  .pkg-img {
+    width: 100%; height: 240px; object-fit: cover;
+    display: block;
+  }
+  .pkg-body { padding: 28px; }
+  .pkg-duration {
+    font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--terracotta); font-weight: 400;
+  }
+  .pkg-card.featured .pkg-duration { color: var(--gold); }
+  .pkg-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 400; margin-top: 8px;
+    color: var(--earth);
+  }
+  .pkg-card.featured .pkg-title { color: var(--cream); }
+  .pkg-desc {
+    font-size: 12px; font-weight: 300; line-height: 1.7;
+    color: #7a5a3a; margin-top: 10px;
+  }
+  .pkg-card.featured .pkg-desc { color: var(--sand); }
+  .pkg-highlights {
+    list-style: none; margin-top: 16px; display: flex; flex-direction: column; gap: 6px;
+  }
+  .pkg-highlights li {
+    font-size: 11px; font-weight: 300; color: #8a6a4a;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .pkg-card.featured .pkg-highlights li { color: var(--sand); }
+  .pkg-highlights li::before {
+    content: ''; width: 14px; height: 1px; background: var(--gold); flex-shrink: 0;
+  }
+  .pkg-footer {
+    padding: 20px 28px; border-top: 1px solid rgba(44,26,14,0.08);
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: auto;
+  }
+  .pkg-card.featured .pkg-footer { border-color: rgba(201,168,76,0.2); }
+  .pkg-price-from {
+    font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: #9a7a5a;
+  }
+  .pkg-card.featured .pkg-price-from { color: var(--sand); }
+  .pkg-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; font-weight: 500; color: var(--earth);
+  }
+  .pkg-card.featured .pkg-price { color: var(--gold); }
+  .pkg-price sub { font-size: 14px; font-weight: 400; }
+  .btn-book {
+    padding: 10px 22px;
+    font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+    border: 1px solid var(--earth); color: var(--earth);
+    text-decoration: none; transition: all 0.3s ease; font-weight: 400;
+  }
+  .btn-book:hover { background: var(--earth); color: var(--cream); }
+  .pkg-card.featured .btn-book {
+    border-color: var(--gold); color: var(--gold);
+  }
+  .pkg-card.featured .btn-book:hover { background: var(--gold); color: var(--earth); }
+
+  /* ── EXPERIENCES ── */
+  #experiences {
+    background: var(--deep-green);
+    position: relative; overflow: hidden;
+  }
+  #experiences::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url('jones.jpg') center/cover no-repeat;
+    opacity: 0.08;
+  }
+  #experiences .section-tag { color: var(--gold); }
+  #experiences .section-tag::before { background: var(--gold); }
+  #experiences .section-title { color: var(--white); }
+  #experiences .section-title em { color: var(--gold); }
+  .exp-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+    margin-top: 60px; background: rgba(255,255,255,0.05);
+  }
+  .exp-card {
+    padding: 48px 36px;
+    text-align: center; background: transparent;
+    transition: background 0.4s ease;
+    cursor: default;
+  }
+  .exp-card:hover { background: rgba(201,168,76,0.08); }
+  .exp-icon {
+    font-size: 36px; margin-bottom: 20px; display: block;
+  }
+  .exp-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 400; color: var(--cream);
+  }
+  .exp-desc {
+    font-size: 12px; font-weight: 300; color: rgba(232,213,163,0.7);
+    margin-top: 10px; line-height: 1.7;
+  }
+
+  /* ── WHY US ── */
+  #why {
+    background: var(--white);
+  }
+  .why-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center; margin-top: 60px;
+  }
+  .why-img-stack { position: relative; height: 560px; }
+  .why-img-1 {
+    position: absolute; top: 0; right: 0;
+    width: 80%; height: 75%; object-fit: cover;
+  }
+  .why-img-2 {
+    position: absolute; bottom: 0; left: 0;
+    width: 60%; height: 55%; object-fit: cover;
+    border: 6px solid var(--white);
+  }
+  .why-quote {
+    position: absolute; bottom: 30%; left: 55%;
+    background: var(--terracotta);
+    padding: 20px 24px;
+    width: 200px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px; font-style: italic;
+    color: var(--white); line-height: 1.5;
+    z-index: 2;
+  }
+  .why-list { display: flex; flex-direction: column; gap: 28px; margin-top: 36px; }
+  .why-item { display: flex; gap: 24px; align-items: flex-start; }
+  .why-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px; font-weight: 300; color: var(--sand);
+    line-height: 1; min-width: 50px;
+  }
+  .why-item-title {
+    font-size: 14px; font-weight: 500; letter-spacing: 0.05em;
+    color: var(--earth); text-transform: uppercase;
+  }
+  .why-item-text {
+    font-size: 13px; font-weight: 300; color: #7a5a3a;
+    margin-top: 6px; line-height: 1.7;
+  }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials {
+    background: var(--cream);
+    overflow: hidden; position: relative;
+  }
+  #testimonials::after {
+    content: '"';
+    position: absolute; right: 10%; top: 10%;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 400px; font-weight: 600; line-height: 1;
+    color: rgba(184,92,43,0.06); pointer-events: none;
+    z-index: 0;
+  }
+  .testi-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+    margin-top: 60px; position: relative; z-index: 1;
+  }
+  .testi-card {
+    background: var(--white); padding: 36px;
+    border-left: 3px solid var(--gold);
+    transition: transform 0.3s ease;
+  }
+  .testi-card:hover { transform: translateY(-4px); }
+  .testi-card:nth-child(2) {
+    border-color: var(--terracotta); margin-top: 30px;
+  }
+  .testi-stars {
+    color: var(--gold); font-size: 14px; letter-spacing: 3px;
+  }
+  .testi-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px; font-style: italic; font-weight: 300;
+    color: var(--earth); line-height: 1.7; margin: 16px 0;
+  }
+  .testi-author {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--terracotta);
+  }
+  .testi-origin {
+    font-size: 11px; font-weight: 300; color: #9a7a5a; margin-top: 3px;
+  }
+  .testi-tour {
+    font-size: 10px; font-weight: 300; color: #b89a7a;
+    margin-top: 4px; letter-spacing: 0.1em;
+  }
+
+  /* ── KILIMANJARO BANNER ── */
+  #kili {
+    height: 460px; position: relative;
+    display: flex; align-items: center; overflow: hidden;
+  }
+  .kili-bg {
+    position: absolute; inset: 0;
+    background: 
+      linear-gradient(90deg, rgba(30,49,32,0.92) 0%, rgba(30,49,32,0.6) 60%, transparent 100%),
+      url('kili.jpg') center/cover no-repeat;
+  }
+  .kili-content { position: relative; z-index: 2; padding: 0 80px; max-width: 650px; }
+  .kili-eyebrow {
+    font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .kili-eyebrow::before {
+    content: ''; width: 28px; height: 1px; background: var(--gold);
+  }
+  .kili-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 58px); font-weight: 300;
+    color: var(--white); line-height: 1.1;
+  }
+  .kili-title em { font-style: italic; color: var(--gold); }
+  .kili-desc {
+    font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.8);
+    margin-top: 20px; line-height: 1.8;
+  }
+  .kili-cta {
+    display: inline-block; margin-top: 32px;
+    padding: 14px 36px; background: var(--terracotta);
+    color: var(--white); text-decoration: none;
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    transition: all 0.3s ease; border: 2px solid var(--terracotta);
+  }
+  .kili-cta:hover { background: transparent; }
+
+  /* ── ZANZIBAR STRIP ── */
+  #zanzibar {
+    height: 380px; position: relative;
+    display: flex; align-items: flex-end; overflow: hidden;
+  }
+  .zanzibar-bg {
+    position: absolute; inset: 0;
+    background: 
+      linear-gradient(180deg, transparent 30%, rgba(10,30,40,0.88) 100%),
+      url('zanzibar.jpg') center/cover no-repeat;
+    animation: heroZoom 12s ease-in-out infinite alternate;
+  }
+  .zanzibar-content {
+    position: relative; z-index: 2;
+    padding: 0 80px 60px;
+    display: flex; justify-content: space-between; align-items: flex-end;
+    width: 100%;
+  }
+  .zanzibar-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 64px); font-weight: 300;
+    color: var(--white);
+  }
+  .zanzibar-title em { font-style: italic; color: var(--sky); }
+  .zanzibar-right { text-align: right; }
+  .zanzibar-right p {
+    font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.8);
+    line-height: 1.7; max-width: 360px;
+  }
+  .btn-zanzibar {
+    display: inline-block; margin-top: 20px;
+    padding: 12px 30px;
+    border: 1px solid var(--sky); color: var(--sky);
+    text-decoration: none; font-size: 10px;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    transition: all 0.3s ease;
+  }
+  .btn-zanzibar:hover { background: var(--sky); color: var(--earth); }
+
+  /* ── CONTACT / BOOKING ── */
+  #contact { background: var(--earth); }
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+  }
+  #contact .section-tag { color: var(--gold); }
+  #contact .section-tag::before { background: var(--gold); }
+  #contact .section-title { color: var(--cream); }
+  #contact .section-title em { color: var(--gold); }
+  .contact-info-text {
+    font-size: 14px; font-weight: 300; color: var(--sand);
+    line-height: 1.8; margin-top: 20px;
+  }
+  .contact-details { margin-top: 40px; display: flex; flex-direction: column; gap: 20px; }
+  .contact-item { display: flex; gap: 16px; align-items: flex-start; }
+  .contact-icon { font-size: 20px; }
+  .contact-item-label {
+    font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); font-weight: 400;
+  }
+  .contact-item-val {
+    font-size: 13px; font-weight: 300; color: var(--cream); margin-top: 3px; line-height: 1.5;
+  }
+  /* Booking form */
+  .booking-form {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 48px;
+  }
+  .form-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 300; color: var(--gold);
+    margin-bottom: 32px;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { margin-bottom: 16px; }
+  .form-group label {
+    display: block; font-size: 9px; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--sand); margin-bottom: 8px;
+    font-weight: 400;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%; padding: 12px 16px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(201,168,76,0.2);
+    color: var(--cream); font-family: 'Jost', sans-serif;
+    font-size: 13px; font-weight: 300;
+    transition: border-color 0.3s ease; outline: none;
+  }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: rgba(255,255,255,0.3); }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--gold); }
+  .form-group select { appearance: none; cursor: pointer; }
+  .form-group select option { background: var(--earth); color: var(--cream); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-submit {
+    width: 100%; padding: 16px;
+    background: var(--terracotta); color: var(--white);
+    border: none; cursor: pointer;
+    font-family: 'Jost', sans-serif;
+    font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+    font-weight: 400;
+    transition: all 0.3s ease; margin-top: 8px;
+    border: 2px solid var(--terracotta);
+  }
+  .form-submit:hover { background: transparent; color: var(--terracotta); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #1a0d06; padding: 60px 0 30px;
+    border-top: 1px solid rgba(201,168,76,0.15);
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 60px; padding-bottom: 50px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-brand span:first-child {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; font-weight: 500; color: var(--gold);
+    display: block;
+  }
+  .footer-brand span:last-child {
+    font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--sand); opacity: 0.6;
+  }
+  .footer-tagline {
+    font-size: 13px; font-weight: 300; color: var(--sand);
+    line-height: 1.7; margin-top: 16px; opacity: 0.7;
+  }
+  .footer-social {
+    display: flex; gap: 12px; margin-top: 24px;
+  }
+  .footer-social a {
+    width: 36px; height: 36px;
+    border: 1px solid rgba(201,168,76,0.25);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--sand); text-decoration: none; font-size: 13px;
+    transition: all 0.3s ease;
+  }
+  .footer-social a:hover { border-color: var(--gold); color: var(--gold); }
+  .footer-col h4 {
+    font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); font-weight: 400; margin-bottom: 20px;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col ul li a {
+    text-decoration: none; color: rgba(232,213,163,0.6);
+    font-size: 12px; font-weight: 300;
+    transition: color 0.3s ease;
+  }
+  .footer-col ul li a:hover { color: var(--gold); }
+  .footer-bottom {
+    padding-top: 28px; display: flex;
+    justify-content: space-between; align-items: center;
+  }
+  .footer-copy {
+    font-size: 11px; font-weight: 300;
+    color: rgba(232,213,163,0.4);
+  }
+  .footer-certs {
+    display: flex; gap: 12px; align-items: center;
+  }
+  .cert-badge {
+    font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(201,168,76,0.5);
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 4px 10px;
+  }
+
+  /* ── AWARD RIBBON ── */
+  .awards-strip {
+    background: var(--gold); padding: 14px 0;
+    overflow: hidden;
+  }
+  .awards-inner {
+    display: flex; gap: 60px; align-items: center;
+    animation: ticker 30s linear infinite;
+    white-space: nowrap;
+  }
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .award-item {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--earth); font-weight: 500;
+  }
+  .award-item span:first-child { font-size: 16px; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    nav.scrolled { padding: 14px 24px; }
+    .nav-links { display: none; }
+    .hero-content { padding: 120px 24px 160px; }
+    .hero-scroll { display: none; }
+    .hero-stats { flex-wrap: wrap; }
+    .stat-item { min-width: 150px; padding: 16px 24px; }
+    .container { padding: 0 24px; }
+    .intro-grid, .why-grid, .contact-grid { grid-template-columns: 1fr; }
+    .intro-images, .why-img-stack { height: 340px; }
+    .dest-grid { grid-template-columns: 1fr; height: auto; }
+    .dest-card:first-child { grid-row: auto; height: 300px; }
+    .dest-card { height: 220px; }
+    .packages-grid { grid-template-columns: 1fr; }
+    .exp-grid { grid-template-columns: 1fr 1fr; }
+    .testi-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .kili-content, .zanzibar-content { padding: 0 24px 40px; }
+    .booking-form { padding: 28px; }
+    .zanzibar-content { flex-direction: column; gap: 24px; align-items: flex-start; }
+    .form-row { grid-template-columns: 1fr; }
+    .dest-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-logo">
+    <span>WildRush Safaris</span>
+    <span>Tanzania · Est. 2025</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#destinations">Destinations</a></li>
+    <li><a href="#packages">Safaris</a></li>
+    <li><a href="#experiences">Experiences</a></li>
+    <li><a href="#why">About</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Book Now</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Arusha, Tanzania · Est. 2025</div>
+    <h1 class="hero-title">
+      Where the Wild<br>
+      <em>Still Roams Free</em>
+    </h1>
+    <p class="hero-sub">
+      Curated safari experiences across Tanzania's most extraordinary landscapes — the Serengeti, Ngorongoro, Kilimanjaro, and beyond.
+    </p>
+    <div class="hero-actions">
+      <a href="#packages" class="btn-primary">Explore Safaris</a>
+      <a href="#contact" class="btn-ghost">Plan My Trip</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">...+</div>
+      <div class="stat-label">Guests Hosted</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">..+</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">48</div>
+      <div class="stat-label">Safari Vehicles</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4.9★</div>
+      <div class="stat-label">TripAdvisor Rating</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">12</div>
+      <div class="stat-label">Tour Awards</div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS TICKER -->
+<div class="awards-strip">
+  <div class="awards-inner">
+    <div class="award-item"><span>🏆</span> Best Safari Operator Tanzania 2024</div>
+    <div class="award-item"><span>🌍</span> TripAdvisor Certificate of Excellence</div>
+    <div class="award-item"><span>⭐</span> Africa's Top Safari Company 2023</div>
+    <div class="award-item"><span>🌿</span> Eco-Certified Operator</div>
+    <div class="award-item"><span>🏅</span> TATO Member — Tanzania Assoc. of Tour Operators</div>
+    <div class="award-item"><span>🦁</span> Serengeti National Park Approved Operator</div>
+    <!-- duplicate for seamless loop -->
+    <div class="award-item"><span>🏆</span> Best Safari Operator Tanzania 2024</div>
+    <div class="award-item"><span>🌍</span> TripAdvisor Certificate of Excellence</div>
+    <div class="award-item"><span>⭐</span> Africa's Top Safari Company 2023</div>
+    <div class="award-item"><span>🌿</span> Eco-Certified Operator</div>
+    <div class="award-item"><span>🏅</span> TATO Member — Tanzania Assoc. of Tour Operators</div>
+    <div class="award-item"><span>🦁</span> Serengeti National Park Approved Operator</div>
+  </div>
+</div>
+
+<!-- INTRO -->
+<section id="intro">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-images">
+        <img class="intro-img-main"
+          src="https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=900&q=80"
+          alt="Serengeti safari" loading="lazy">
+        <img class="intro-img-secondary"
+          src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=80"
+          alt="African wildlife" loading="lazy">
+        <div class="intro-badge">
+          <span>9+</span>
+          <span>Years of<br>Wild Journeys</span>
+        </div>
+      </div>
+      <div class="intro-text">
+        <div class="section-tag">Our Story</div>
+        <h2 class="section-title">Authentic Tanzania,<br><em>Masterfully Crafted</em></h2>
+        <p>Founded in Arusha in 2025 by a former safari guide, WildRush Safaris was born from a deep love for Tanzania's wild places and a desire to share them honestly. We are locally owned, locally driven — and fiercely proud of it.</p>
+        <p>From the endless plains of the Serengeti to the icy summit of Kilimanjaro and the turquoise shores of Zanzibar, we craft journeys that go beyond the ordinary — personalised itineraries, expert naturalist guides, and a commitment to responsible travel that protects the land we love.</p>
+        <div class="intro-features">
+          <div class="intro-feat">
+            <div class="feat-icon">🚙</div>
+            <div>
+              <div class="feat-label">Own Fleet</div>
+              <div class="feat-desc">48 custom Land Cruisers, window seat guaranteed</div>
+            </div>
+          </div>
+          <div class="intro-feat">
+            <div class="feat-icon">🌿</div>
+            <div>
+              <div class="feat-label">Eco-Certified</div>
+              <div class="feat-desc">Leave-no-trace principles on every trip</div>
+            </div>
+          </div>
+          <div class="intro-feat">
+            <div class="feat-icon">🎖️</div>
+            <div>
+              <div class="feat-label">Expert Guides</div>
+              <div class="feat-desc">Licensed naturalists with 10+ years field experience</div>
+            </div>
+          </div>
+          <div class="intro-feat">
+            <div class="feat-icon">📞</div>
+            <div>
+              <div class="feat-label">24/7 Support</div>
+              <div class="feat-desc">Dedicated in-country contact throughout your trip</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESTINATIONS -->
+<section id="destinations">
+  <div class="container">
+    <div class="dest-header">
+      <div>
+        <div class="section-tag">Where We Go</div>
+        <h2 class="section-title">Tanzania's Most<br><em>Iconic Destinations</em></h2>
+        <p class="dest-intro-text">Each destination tells its own story. From migrating wildebeest to sleeping giants and coral-fringed islands — this is the Africa of your imagination, made real.</p>
+      </div>
+      <div class="dest-scroll-hint">
+        Hover to explore ↓
+      </div>
+    </div>
+    <div class="dest-grid">
+      <div class="dest-card">
+        <img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=900&q=80" alt="Serengeti">
+        <div class="dest-overlay">
+          <div class="dest-tag">Northern Circuit</div>
+          <div class="dest-name">Serengeti National Park</div>
+          <div class="dest-desc">Home of the Great Migration — 1.5 million wildebeest crossing endless golden plains under dramatic skies.</div>
+        </div>
+      </div>
+      <div class="dest-card">
+        <img src="https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=600&q=80" alt="Ngorongoro">
+        <div class="dest-overlay">
+          <div class="dest-tag">Conservation Area</div>
+          <div class="dest-name">Ngorongoro Crater</div>
+          <div class="dest-desc">The world's largest intact caldera — a natural Eden teeming with the Big Five.</div>
+        </div>
+      </div>
+      <div class="dest-card">
+        <img src="climblion2.jpg" alt="Tarangire">
+        <div class="dest-overlay">
+          <div class="dest-tag">Northern Circuit</div>
+          <div class="dest-name">Tarangire National Park</div>
+          <div class="dest-desc">Ancient baobabs and the largest elephant herds in East Africa.</div>
+        </div>
+      </div>
+      <div class="dest-card">
+        <img src="zanzibar 3.jpg" alt="Zanzibar">
+        <div class="dest-overlay">
+          <div class="dest-tag">Indian Ocean</div>
+          <div class="dest-name">Zanzibar Archipelago</div>
+          <div class="dest-desc">Spice-scented air, powdery beaches and the ancient labyrinth of Stone Town.</div>
+        </div>
+      </div>
+      <div class="dest-card">
+        <img src="kili.jpg" alt="Kilimanjaro">
+        <div class="dest-overlay">
+          <div class="dest-tag">Africa's Rooftop</div>
+          <div class="dest-name">Mount Kilimanjaro</div>
+          <div class="dest-desc">Africa's highest summit — 5,895m above sea level, a once-in-a-lifetime climb.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section id="packages">
+  <div class="container">
+    <div class="pkg-header">
+      <div>
+        <div class="section-tag">Safari Packages</div>
+        <h2 class="section-title">Curated Journeys,<br><em>Perfectly Timed</em></h2>
+      </div>
+      <div class="pkg-tabs">
+        <button class="pkg-tab active">All Safaris</button>
+        <button class="pkg-tab">Short Trips</button>
+        <button class="pkg-tab">Classic</button>
+        <button class="pkg-tab">Luxury</button>
+      </div>
+    </div>
+    <div class="packages-grid">
+      <!-- Card 1 -->
+      <div class="pkg-card">
+        <img class="pkg-img"
+          src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=700&q=80"
+          alt="Serengeti Classic" loading="lazy">
+        <div class="pkg-body">
+          <div class="pkg-duration">6 Days · 5 Nights</div>
+          <h3 class="pkg-title">Serengeti Classic Safari</h3>
+          <p class="pkg-desc">The quintessential Tanzania safari. Serengeti, Ngorongoro Crater, and Tarangire — three icons, one unforgettable journey.</p>
+          <ul class="pkg-highlights">
+            <li>Serengeti National Park game drives</li>
+            <li>Ngorongoro Crater full-day descent</li>
+            <li>Tarangire elephant plains</li>
+            <li>All meals & park fees included</li>
+          </ul>
+        </div>
+        <div class="pkg-footer">
+          <div>
+            <div class="pkg-price-from">From</div>
+            <div class="pkg-price"><sub> </sub></div>
+          </div>
+          <a href="#contact" class="btn-book">Book Now</a>
+        </div>
+      </div>
+      <!-- Card 2 FEATURED -->
+      <div class="pkg-card featured">
+        <img class="pkg-img"
+          src="https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=700&q=80"
+          alt="Great Migration" loading="lazy">
+        <div class="pkg-body">
+          <div class="pkg-duration">10 Days · 9 Nights · ⭐ Most Popular</div>
+          <h3 class="pkg-title">The Great Migration Expedition</h3>
+          <p class="pkg-desc">Witness the world's greatest wildlife spectacle. Time your visit to the dramatic Mara River crossing — truly nature at its most raw.</p>
+          <ul class="pkg-highlights">
+            <li>Migration river crossing (July–Oct)</li>
+            <li>Hot air balloon over the Serengeti</li>
+            <li>Ngorongoro & Tarangire</li>
+            <li>Luxury tented camp stays</li>
+            <li>Private guide throughout</li>
+          </ul>
+        </div>
+        <div class="pkg-footer">
+          <div>
+            <div class="pkg-price-from"></div>
+            <div class="pkg-price"><sub> </sub></div>
+          </div>
+          <a href="#contact" class="btn-book">Book Now</a>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="pkg-card">
+        <img class="pkg-img"
+          src="zanzibar 3.jpg"
+          alt="Bush & Beach" loading="lazy">
+        <div class="pkg-body">
+          <div class="pkg-duration">9 Days · 8 Nights</div>
+          <h3 class="pkg-title">Bush & Beach — Safari to Zanzibar</h3>
+          <p class="pkg-desc">The perfect pairing. Three days in the Serengeti and Ngorongoro, then five languid days on the white sands of Zanzibar.</p>
+          <ul class="pkg-highlights">
+            <li>Northern circuit safari (3 nights)</li>
+            <li>Stone Town cultural tour</li>
+            <li>Zanzibar beach resort (4 nights)</li>
+            <li>Snorkeling & spice tour</li>
+          </ul>
+        </div>
+        <div class="pkg-footer">
+          <div>
+            <div class="pkg-price-from">From</div>
+            <div class="pkg-price"><sub> </sub></div>
+          </div>
+          <a href="#contact" class="btn-book">Book Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCES -->
+<section id="experiences">
+  <div class="container" style="position:relative; z-index:1;">
+    <div class="section-tag">What We Offer</div>
+    <h2 class="section-title">Beyond the<br><em>Ordinary Safari</em></h2>
+    <div class="exp-grid">
+      <div class="exp-card">
+        <span class="exp-icon">🦁</span>
+        <h3 class="exp-title">Game Drives</h3>
+        <p class="exp-desc">Daily game drives in custom open-roof Land Cruisers, guided by expert naturalists who know the animals by name.</p>
+      </div>
+      <div class="exp-card">
+        <span class="exp-icon">🏔️</span>
+        <h3 class="exp-title">Kilimanjaro Climbs</h3>
+        <p class="exp-desc">Guided ascents via Lemosho, Machame, and Marangu routes with full support crew and altitude acclimatization protocols.</p>
+      </div>
+      <div class="exp-card">
+        <span class="exp-icon">🎈</span>
+        <h3 class="exp-title">Balloon Safaris</h3>
+        <p class="exp-desc">Float silently over the Serengeti at sunrise — the most breathtaking vantage point in all of Africa.</p>
+      </div>
+      <div class="exp-card">
+        <span class="exp-icon">🌊</span>
+        <h3 class="exp-title">Zanzibar Escapes</h3>
+        <p class="exp-desc">Dive the coral reefs, sail a dhow at sunset, and lose yourself in the spice-scented streets of Stone Town.</p>
+      </div>
+      <div class="exp-card">
+        <span class="exp-icon">🦒</span>
+        <h3 class="exp-title">Walking Safaris</h3>
+        <p class="exp-desc">Experience the bush at ground level — tracking footprints, reading the landscape, feeling the rawness of wild Africa.</p>
+      </div>
+      <div class="exp-card">
+        <span class="exp-icon">🎻</span>
+        <h3 class="exp-title">Cultural Tours</h3>
+        <p class="exp-desc">Visit Maasai villages, meet the Hadzabe bushmen, and share a meal with a Chagga family on the slopes of Kilimanjaro.</p>
+      </div>
+      <div class="exp-card">
+        <span class="exp-icon">🦅</span>
+        <h3 class="exp-title">Birdwatching</h3>
+        <p class="exp-desc">Tanzania's 1,000+ bird species — from flamingos on Lake Manyara to the rare shoebill in the remote western parks.</p>
+      </div>
+      <div class="exp-card">
+        <span class="exp-icon">📸</span>
+        <h3 class="exp-title">Photo Safaris</h3>
+        <p class="exp-desc">Specialist photography vehicles, extended golden-hour stops, and expert guidance for capturing Africa's wildest moments.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KILIMANJARO BANNER -->
+<section id="kili">
+  <div class="kili-bg"></div>
+  <div class="kili-content">
+    <div class="kili-eyebrow">The Roof of Africa</div>
+    <h2 class="kili-title">Reach the Summit of<br><em>Kilimanjaro</em></h2>
+    <p class="kili-desc">At 5,895 metres, Kilimanjaro is the world's tallest free-standing mountain and Africa's highest peak. Our experienced mountain crew will guide you safely from rainforest to glacier — and to the top of a continent.</p>
+    <a href="#contact" class="kili-cta">Plan My Climb</a>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="container">
+    <div class="section-tag">Why Choose Us</div>
+    <h2 class="section-title">The WildRush Safaris<br><em>Difference</em></h2>
+    <div class="why-grid">
+      <div class="why-img-stack">
+        <img class="why-img-1"
+          src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=800&q=80"
+          alt="Safari guide" loading="lazy">
+        <img class="why-img-2"
+          src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=500&q=80"
+          alt="Wildlife" loading="lazy">
+        <div class="why-quote">"Not just a trip — a chapter of your life."</div>
+      </div>
+      <div>
+        <div class="why-list">
+          <div class="why-item">
+            <div class="why-num">01</div>
+            <div>
+              <div class="why-item-title">Locally Owned & Operated</div>
+              <p class="why-item-text">No third-party commissions. No middlemen. We are Tanzanian — we know this land, its seasons, and its secrets. Our guides grew up here.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-num">02</div>
+            <div>
+              <div class="why-item-title">Fully Personalised Itineraries</div>
+              <p class="why-item-text">Every safari is built around you — your pace, your interests, your budget. We don't do cookie-cutter packages.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-num">03</div>
+            <div>
+              <div class="why-item-title">Responsible & Sustainable Travel</div>
+              <p class="why-item-text">We contribute to community projects, employ local staff, and operate with genuine conservation values — not greenwashing.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-num">04</div>
+            <div>
+              <div class="why-item-title">Competitive & Transparent Pricing</div>
+              <p class="why-item-text">Because we own our vehicles and guides, we cut out agency markups — giving you more value and more honesty.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container">
+    <div class="section-tag">Real Stories</div>
+    <h2 class="section-title">What Our Guests<br><em>Say</em></h2>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Witnessing the Great Migration from our balloon was otherworldly. Our guide, Emmanuel, had a gift for finding the animals and making us feel completely safe in the wild."</p>
+        <div class="testi-author">Sarah & Tom Wentworth</div>
+        <div class="testi-origin">London, United Kingdom</div>
+        <div class="testi-tour">Great Migration Expedition · August 2024</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"From the moment we landed in Kilimanjaro, WildRush Safaris took care of everything. The Ngorongoro crater descent was the single most spectacular thing I have ever seen."</p>
+        <div class="testi-author">Marco & Giulia Ferrara</div>
+        <div class="testi-origin">Milan, Italy</div>
+        <div class="testi-tour">Serengeti Classic Safari · June 2024</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"We came back a different family. Five nights in the bush, then five days in Zanzibar — our kids are still talking about it six months later. This company is the real deal."</p>
+        <div class="testi-author">The Nakamura Family</div>
+        <div class="testi-origin">Tokyo, Japan</div>
+        <div class="testi-tour">Bush & Beach Package · December 2024</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ZANZIBAR STRIP -->
+<section id="zanzibar">
+  <div class="zanzibar-bg"></div>
+  <div class="zanzibar-content">
+    <h2 class="zanzibar-title">Extend to<br><em>Zanzibar</em></h2>
+    <div class="zanzibar-right">
+      <p>Trade your safari boots for sand between your toes. Zanzibar's turquoise waters, vibrant coral reefs, and the ancient quarter of Stone Town make the perfect post-safari escape.</p>
+      <a href="#contact" class="btn-zanzibar">Add Zanzibar to My Trip</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT & BOOKING -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <div class="section-tag">Get in Touch</div>
+        <h2 class="section-title">Start Planning Your<br><em>Tanzania Journey</em></h2>
+        <p class="contact-info-text">Every great safari begins with a conversation. Tell us your dream — we'll handle the rest. Our team in Arusha responds within 24 hours.</p>
+        <div class="contact-details">
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <div class="contact-item-label">Office</div>
+              <div class="contact-item-val">Arusha International Conference Centre (AICC)<br>Boma Road, Arusha, Tanzania</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <div class="contact-item-label">Phone & WhatsApp</div>
+              <div class="contact-item-val">+255 656 710 374<br></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div>
+              <div class="contact-item-label">Email</div>
+              <div class="contact-item-val"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="91f8fff7fed1e2f0e7f0fffff0f0fff5e2e4fcfcf8e5bff2febfe5eb">[email&#160;protected]</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🕐</div>
+            <div>
+              <div class="contact-item-label">Response Time</div>
+              <div class="contact-item-val">Within 24 hours · 7 days a week</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="booking-form">
+        <div class="form-title">Request a Free Quote</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="Your first name">
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Your last name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Travel Dates</label>
+            <input type="text" placeholder="e.g. July 10–20, 2025">
+          </div>
+          <div class="form-group">
+            <label>Group Size</label>
+            <input type="text" placeholder="e.g. 2 adults, 1 child">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Safari Interest</label>
+          <select>
+            <option>Select your experience</option>
+            <option>Serengeti Classic Safari</option>
+            <option>Great Migration Expedition</option>
+            <option>Bush & Beach (Zanzibar)</option>
+            <option>Mount Kilimanjaro Climb</option>
+            <option>Cultural & Community Tour</option>
+            <option>Custom Itinerary</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tell Us Your Dream Trip</label>
+          <textarea placeholder="Any special requests, celebrations, interests or questions..."></textarea>
+        </div>
+        <button class="form-submit">Send My Enquiry →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span>WildRush Safaris</span>
+        <span>Arusha, Tanzania · Est. 2025</span>
+        <p class="footer-tagline">Tanzania's most trusted locally-owned safari operator. TATO certified, eco-conscious, and passionate about wild Africa.</p>
+        <div class="footer-social">
+          <a href="#" title="Facebook">f</a>
+          <a href="#" title="Instagram">in</a>
+          <a href="#" title="TripAdvisor">✈</a>
+          <a href="#" title="WhatsApp">✉</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Safaris</h4>
+        <ul>
+          <li><a href="#">Serengeti Classic</a></li>
+          <li><a href="#">Great Migration</a></li>
+          <li><a href="#">Bush & Beach</a></li>
+          <li><a href="#">Kilimanjaro Climb</a></li>
+          <li><a href="#">Family Safaris</a></li>
+          <li><a href="#">Honeymoon Packages</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Destinations</h4>
+        <ul>
+          <li><a href="#">Serengeti</a></li>
+          <li><a href="#">Ngorongoro Crater</a></li>
+          <li><a href="#">Tarangire</a></li>
+          <li><a href="#">Lake Manyara</a></li>
+          <li><a href="#">Zanzibar</a></li>
+          <li><a href="#">Mount Kilimanjaro</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Our Guides</a></li>
+          <li><a href="#">Our Fleet</a></li>
+          <li><a href="#">Sustainability</a></li>
+          <li><a href="#">Reviews</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 WildRush Safaris Ltd. All rights reserved. Arusha, Tanzania.</div>
+      <div class="footer-certs">
+        <span class="cert-badge">TATO Member</span>
+        <span class="cert-badge">Eco Certified</span>
+        <span class="cert-badge">TripAdvisor 5★</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Nav scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Package tab interaction
+  document.querySelectorAll('.pkg-tab').forEach(tab => {
+    tab.addEventListener('click', function() {
+      document.querySelectorAll('.pkg-tab').forEach(t => t.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Intersection observer for fade-in
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.pkg-card, .dest-card, .testi-card, .exp-card, .why-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+
+  // Form submit feedback
+  document.querySelector('.form-subm
