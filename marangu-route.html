@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marangu Route — Mt. Kilimanjaro | WildRush Safaris</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --earth: #633e25; --terracotta: #b85c2b; --amber: #d4892a; --gold: #c9a84c;
+    --sand: #e8d5a3; --cream: #f5efe3; --sage: #4a5e45; --deep-green: #274b2a;
+    --sky: #7da5b8; --white: #faf7f2;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Jost', sans-serif; background: #fff; color: var(--earth); overflow-x: hidden; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 60px; display: flex; align-items: center; justify-content: space-between; background: rgba(44,26,14,0.95); backdrop-filter: blur(12px); box-shadow: 0 4px 30px rgba(0,0,0,0.3); }
+  .nav-logo { display: flex; flex-direction: column; line-height: 1; text-decoration: none; }
+  .nav-logo span:first-child { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--white); }
+  .nav-logo span:last-child { font-size: 9px; font-weight: 300; letter-spacing: 0.25em; text-transform: uppercase; color: var(--sand); margin-top: 2px; }
+  .nav-back { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); text-decoration: none; display: flex; align-items: center; gap: 8px; transition: gap 0.3s; }
+  .nav-back:hover { gap: 12px; }
+  .nav-cta { padding: 10px 24px; border: 1px solid var(--gold); color: var(--gold); text-decoration: none; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; transition: all 0.3s; }
+  .nav-cta:hover { background: var(--gold); color: var(--earth); }
+
+  /* HERO */
+  .route-hero { height: 90vh; position: relative; display: flex; align-items: flex-end; overflow: hidden; }
+  .route-hero-bg { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,6,3,0.3) 0%, rgba(10,6,3,0.8) 100%), url('marangu.jpg') center/cover no-repeat; animation: heroZoom 20s ease-in-out infinite alternate; }
+  @keyframes heroZoom { from { transform: scale(1); } to { transform: scale(1.05); } }
+  .route-hero-content { position: relative; z-index: 2; padding: 0 80px 80px; width: 100%; }
+  .breadcrumb { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 16px; }
+  .breadcrumb a { color: var(--gold); text-decoration: none; }
+  .breadcrumb a:hover { text-decoration: underline; }
+  .route-tag { display: inline-block; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold); padding: 5px 16px; margin-bottom: 20px; }
+  .route-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(48px, 7vw, 88px); font-weight: 300; color: #fff; line-height: 1; margin-bottom: 16px; }
+  .route-hero h1 em { font-style: italic; color: var(--gold); }
+  .route-hero-sub { font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.8); max-width: 560px; line-height: 1.8; }
+  .hero-stats-bar { position: absolute; bottom: 0; left: 0; right: 0; z-index: 3; background: rgba(44,26,14,0.9); backdrop-filter: blur(16px); border-top: 1px solid rgba(201,168,76,0.25); display: flex; justify-content: center; }
+  .hstat { flex: 1; max-width: 180px; padding: 18px 20px; text-align: center; border-right: 1px solid rgba(201,168,76,0.15); }
+  .hstat:last-child { border-right: none; }
+  .hstat-num { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 500; color: var(--gold); line-height: 1; }
+  .hstat-label { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sand); margin-top: 4px; font-weight: 300; }
+
+  /* LAYOUT */
+  .container { max-width: 1300px; margin: 0 auto; padding: 0 60px; }
+  .section-tag { font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--terracotta); display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .section-tag::before { content: ''; width: 28px; height: 1px; background: var(--terracotta); }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 48px); font-weight: 300; color: var(--earth); line-height: 1.2; }
+  .section-title em { font-style: italic; color: var(--terracotta); }
+
+  /* OVERVIEW */
+  #overview { padding: 90px 0; background: #fff; }
+  .overview-grid { display: grid; grid-template-columns: 1fr 420px; gap: 80px; align-items: start; margin-top: 50px; }
+  .overview-text p { font-size: 15px; font-weight: 300; line-height: 1.9; color: #5a4030; margin-bottom: 20px; }
+  .overview-meta { background: var(--cream); padding: 40px; }
+  .meta-title { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 24px; font-weight: 500; }
+  .meta-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid rgba(99,62,37,0.1); font-size: 13px; }
+  .meta-row:last-child { border-bottom: none; }
+  .meta-key { font-weight: 400; color: #8a6a4a; letter-spacing: 0.05em; }
+  .meta-val { font-weight: 500; color: var(--earth); text-align: right; }
+  .difficulty-bar { display: flex; gap: 4px; margin-top: 4px; }
+  .diff-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(99,62,37,0.15); }
+  .diff-dot.filled { background: var(--terracotta); }
+  .best-time { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+  .month-badge { font-size: 10px; padding: 3px 9px; background: var(--deep-green); color: var(--sand); letter-spacing: 0.05em; }
+
+  /* ROUTE MAP / CAMPS */
+  #camps { padding: 80px 0; background: var(--earth); }
+  #camps .section-tag { color: var(--gold); }
+  #camps .section-tag::before { background: var(--gold); }
+  #camps .section-title { color: var(--cream); }
+  #camps .section-title em { color: var(--gold); }
+  .camps-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; margin-top: 50px; }
+  .camp-item { background: rgba(255,255,255,0.04); padding: 24px 16px; text-align: center; border-top: 3px solid transparent; transition: all 0.3s; }
+  .camp-item:hover { background: rgba(201,168,76,0.08); border-top-color: var(--gold); }
+  .camp-day { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .camp-name { font-family: 'Cormorant Garamond', serif; font-size: 15px; color: var(--cream); margin-bottom: 8px; }
+  .camp-alt { font-size: 11px; color: var(--sand); font-weight: 300; }
+  .camp-connector { display: flex; align-items: center; justify-content: center; padding-top: 40px; }
+  .camp-arrow { color: var(--gold); font-size: 18px; opacity: 0.5; }
+
+  /* ITINERARY */
+  #itinerary { padding: 90px 0; background: var(--cream); }
+  .itinerary-list { margin-top: 50px; display: flex; flex-direction: column; gap: 3px; }
+  .day-item { background: var(--white); overflow: hidden; }
+  .day-header { display: flex; align-items: center; gap: 24px; padding: 28px 32px; cursor: pointer; transition: background 0.3s; }
+  .day-header:hover { background: #f0e8d6; }
+  .day-header.active { background: var(--earth); }
+  .day-num { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; color: var(--gold); min-width: 60px; line-height: 1; }
+  .day-header.active .day-num { color: var(--gold); }
+  .day-info { flex: 1; }
+  .day-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 400; color: var(--earth); }
+  .day-header.active .day-title { color: var(--cream); }
+  .day-meta-row { display: flex; gap: 20px; margin-top: 5px; }
+  .day-meta-tag { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--terracotta); }
+  .day-header.active .day-meta-tag { color: var(--gold); opacity: 0.8; }
+  .day-toggle { font-size: 20px; color: var(--gold); transition: transform 0.3s; min-width: 24px; text-align: center; }
+  .day-header.active .day-toggle { transform: rotate(45deg); }
+  .day-body { display: none; padding: 0 32px 32px; }
+  .day-body.open { display: block; }
+  .day-grid { display: grid; grid-template-columns: 1fr 280px; gap: 40px; margin-top: 24px; }
+  .day-desc { font-size: 14px; font-weight: 300; line-height: 1.9; color: #5a4030; }
+  .day-img { width: 100%; height: 200px; object-fit: cover; }
+  .day-details { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 12px; }
+  .day-detail-chip { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; padding: 6px 14px; border: 1px solid rgba(99,62,37,0.2); color: var(--earth); }
+  .meal-chip { background: var(--deep-green); color: var(--sand); border-color: var(--deep-green); }
+  .camp-chip { background: rgba(201,168,76,0.1); border-color: var(--gold); color: var(--earth); }
+
+  /* INCLUSIONS */
+  #inclusions { padding: 90px 0; background: #fff; }
+  .inc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 50px; }
+  .inc-box { }
+  .inc-box-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 400; color: var(--earth); margin-bottom: 28px; padding-bottom: 16px; border-bottom: 1px solid rgba(99,62,37,0.15); }
+  .inc-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .inc-list li { font-size: 13px; font-weight: 300; color: #5a4030; display: flex; align-items: flex-start; gap: 12px; line-height: 1.6; }
+  .inc-list li::before { content: '✓'; font-size: 11px; color: var(--sage); font-weight: 600; min-width: 16px; margin-top: 2px; }
+  .exc-list li::before { content: '✕'; color: #c0392b; }
+
+  /* PACKING */
+  #packing { padding: 90px 0; background: var(--earth); }
+  #packing .section-tag { color: var(--gold); }
+  #packing .section-tag::before { background: var(--gold); }
+  #packing .section-title { color: var(--cream); }
+  .packing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 50px; }
+  .pack-category { background: rgba(255,255,255,0.04); padding: 32px; border-top: 2px solid var(--gold); }
+  .pack-cat-title { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+  .pack-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .pack-list li { font-size: 12px; font-weight: 300; color: var(--sand); display: flex; gap: 10px; align-items: flex-start; line-height: 1.5; }
+  .pack-list li::before { content: '—'; color: var(--gold); opacity: 0.5; }
+
+  /* CTA BANNER */
+  #book { padding: 100px 0; background: var(--cream); text-align: center; }
+  .book-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(38px, 5vw, 60px); font-weight: 300; color: var(--earth); margin-bottom: 20px; }
+  .book-title em { font-style: italic; color: var(--terracotta); }
+  .book-sub { font-size: 14px; font-weight: 300; color: #7a5a3a; line-height: 1.8; max-width: 480px; margin: 0 auto 40px; }
+  .book-price-badge { display: inline-flex; flex-direction: column; align-items: center; margin-bottom: 40px; background: var(--earth); padding: 20px 40px; }
+  .bpb-from { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--sand); }
+  .bpb-price { font-family: 'Cormorant Garamond', serif; font-size: 40px; color: var(--gold); font-weight: 400; }
+  .bpb-pp { font-size: 11px; color: var(--sand); font-weight: 300; }
+  .book-actions { display: flex; gap: 16px; justify-content: center; }
+  .btn-book-main { padding: 16px 44px; background: var(--terracotta); color: #fff; text-decoration: none; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; border: 2px solid var(--terracotta); transition: all 0.3s; }
+  .btn-book-main:hover { background: transparent; color: var(--terracotta); }
+  .btn-ghost-main { padding: 16px 44px; border: 1px solid rgba(99,62,37,0.3); color: var(--earth); text-decoration: none; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; transition: all 0.3s; }
+  .btn-ghost-main:hover { border-color: var(--earth); background: var(--earth); color: var(--cream); }
+
+  /* FOOTER */
+  footer { background: #1a0d06; padding: 40px 0 24px; border-top: 1px solid rgba(201,168,76,0.15); }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; }
+  .footer-copy { font-size: 11px; color: rgba(232,213,163,0.4); font-weight: 300; }
+  .footer-links { display: flex; gap: 28px; }
+  .footer-links a { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(232,213,163,0.5); text-decoration: none; transition: color 0.3s; }
+  .footer-links a:hover { color: var(--gold); }
+
+  /* MOBILE */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .route-hero-content { padding: 0 24px 80px; }
+    .container { padding: 0 24px; }
+    .overview-grid { grid-template-columns: 1fr; gap: 40px; }
+    .camps-grid { grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .day-grid { grid-template-columns: 1fr; }
+    .inc-grid { grid-template-columns: 1fr; }
+    .packing-grid { grid-template-columns: 1fr; }
+    .book-actions { flex-direction: column; align-items: center; }
+    .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+    .hero-stats-bar { flex-wrap: wrap; }
+    .hstat { min-width: 120px; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="updated.html" class="nav-logo"><span>WildRush Safaris</span><span>Tanzania · Est. 2025</span></a>
+  <a href="updated.html#packages" class="nav-back">← Back to All Routes</a>
+  <a href="updated.html#contact" class="nav-cta">Book Now</a>
+</nav>
+<section class="route-hero">
+  <div class="route-hero-bg" style="background-image: linear-gradient(180deg, rgba(10,6,3,0.3) 0%, rgba(10,6,3,0.8) 100%), url('marangu.jpg'); background-size: cover; background-position: center;"></div>
+  <div class="route-hero-content">
+    <div class="breadcrumb"><a href="updated.html">Home</a> &nbsp;/&nbsp; <a href="updated.html#packages">Mt. Kilimanjaro</a> &nbsp;/&nbsp; Marangu Route</div>
+    <div class="route-tag">The Coca-Cola Route</div>
+    <h1>Marangu<br><em>Route</em></h1>
+    <p class="route-hero-sub">The original Kilimanjaro trail and the only route with hut accommodation — a classic, civilised ascent of Africa's highest mountain.</p>
+  </div>
+  <div class="hero-stats-bar"><div class="hstat"><div class="hstat-num">6</div><div class="hstat-label">Days</div></div><div class="hstat"><div class="hstat-num">82km</div><div class="hstat-label">Total Distance</div></div><div class="hstat"><div class="hstat-num">5,895m</div><div class="hstat-label">Summit Elevation</div></div><div class="hstat"><div class="hstat-num">~65%</div><div class="hstat-label">Success Rate</div></div><div class="hstat"><div class="hstat-num">Huts</div><div class="hstat-label">Accommodation</div></div></div>
+</section>
+
+<section id="overview">
+  <div class="container">
+    <div class="section-tag">Route Overview</div>
+    <h2 class="section-title">Everything You Need to Know About the<br><em>Marangu Route</em></h2>
+    <div class="overview-grid">
+      <div class="overview-text"><p>The Marangu Route — nicknamed the "Coca-Cola Route" for its relative comfort — is the oldest and most established trail on Kilimanjaro. It holds a special place in the mountain's history as the route most early pioneers used, and it remains the only path on the mountain that offers dormitory-style hut accommodation rather than camping.</p>
+<p>The huts — Mandara, Horombo, and Kibo — are simple but functional A-frame structures with bunk beds, communal dining areas, and basic toilet facilities. This makes Marangu the most accessible route for climbers who prefer not to sleep in tents, and the most practical choice during the rainy season when camping routes become significantly harder.</p>
+<p>The route approaches from the southeast, near Marangu village on the lower slopes of Kilimanjaro. It ascends and descends on the same path — a point of criticism from purists but a practical advantage for those short on time. The gradient is gentler than most other routes, making it the go-to choice for first-time high-altitude hikers.</p>
+<p>However, Marangu's gentle gradient and shorter duration (typically 6 days) means the acclimatisation profile is less ideal than longer western routes. An extra acclimatisation day at Horombo (Day 3) is strongly recommended and is included in our itinerary. This single addition can significantly improve summit success rates.</p>
+</div>
+      <div>
+        <div class="overview-meta">
+          <div class="meta-title">Route at a Glance</div>
+          <div class="meta-row"><span class="meta-key">Duration</span><span class="meta-val">6 Days / 5 Nights</span></div>
+<div class="meta-row"><span class="meta-key">Total Distance</span><span class="meta-val">82 km</span></div>
+<div class="meta-row"><span class="meta-key">Max Elevation</span><span class="meta-val">5,895m (Uhuru Peak)</span></div>
+<div class="meta-row"><span class="meta-key">Trailhead</span><span class="meta-val">Marangu Gate (1,860m)</span></div>
+<div class="meta-row"><span class="meta-key">Descent Route</span><span class="meta-val">Same as ascent (Marangu)</span></div>
+<div class="meta-row"><span class="meta-key">Accommodation</span><span class="meta-val">Huts (bunk beds provided)</span></div>
+<div class="meta-row"><span class="meta-key">Group Size</span><span class="meta-val">2–16 climbers</span></div>
+<div class="meta-row"><span class="meta-key">Difficulty</span><span class="meta-val"><div class="difficulty-bar"><div class="diff-dot filled"></div><div class="diff-dot filled"></div><div class="diff-dot filled"></div><div class="diff-dot"></div><div class="diff-dot"></div></div></span></div>
+
+          <div class="meta-row"><span class="meta-key">Best Months</span><span class="meta-val"><div class="best-time"><span class="month-badge">Jan</span><span class="month-badge">Feb</span><span class="month-badge">Jul</span><span class="month-badge">Aug</span><span class="month-badge">Sep</span><span class="month-badge">Oct</span></div></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="camps">
+  <div class="container">
+    <div class="section-tag">Camp Progression</div>
+    <h2 class="section-title">Your Path to<br><em>Uhuru Peak</em></h2>
+    <div class="camps-grid"><div class="camp-item"><div class="camp-day">Day 1</div><div class="camp-name">Marangu Gate</div><div class="camp-alt">1,860m</div></div>
+<div class="camp-item"><div class="camp-day">Day 2</div><div class="camp-name">Mandara Hut</div><div class="camp-alt">2,720m</div></div>
+<div class="camp-item"><div class="camp-day">Day 3</div><div class="camp-name">Horombo Hut</div><div class="camp-alt">3,720m</div></div>
+<div class="camp-item"><div class="camp-day">Day 3</div><div class="camp-name">Acclimatisation</div><div class="camp-alt">Horombo</div></div>
+<div class="camp-item"><div class="camp-day">Day 4</div><div class="camp-name">Kibo Hut</div><div class="camp-alt">4,703m</div></div>
+<div class="camp-item"><div class="camp-day">Summit</div><div class="camp-name">Uhuru Peak</div><div class="camp-alt">5,895m</div></div>
+<div class="camp-item"><div class="camp-day">Day 6</div><div class="camp-name">Marangu Gate</div><div class="camp-alt">1,860m</div></div>
+</div>
+  </div>
+</section>
+
+<section id="itinerary">
+  <div class="container">
+    <div class="section-tag">Day-by-Day Itinerary</div>
+    <h2 class="section-title">Every Step of<br><em>Your Journey</em></h2>
+    <div class="itinerary-list">
+      <div class="day-item">
+        <div class="day-header active" onclick="toggleDay(this)">
+          <div class="day-num">01</div>
+          <div class="day-info"><div class="day-title">Marangu Gate → Mandara Hut</div>
+          <div class="day-meta-row"><span class="day-meta-tag">Elevation: 1,860m → 2,720m</span><span class="day-meta-tag">Distance: 8km</span><span class="day-meta-tag">Hiking Time: 3–4 hrs</span></div></div>
+          <div class="day-toggle">+</div>
+        </div>
+        <div class="day-body open">
+          <div class="day-grid">
+            <div><p class="day-desc" style="margin-top:0px;">Your climb begins at Marangu Gate, a bustling entry point at the edge of Kilimanjaro National Park. After registration and a briefing from your guides, the trail enters the dense Kilimanjaro rainforest — one of the most biodiverse habitats on the mountain.</p><p class="day-desc" style="margin-top:14px;">The path is well-maintained and relatively gentle, winding through ancient fig trees, giant ferns, and patches of bamboo. Colobus monkeys are frequently spotted overhead. The forest is cool and misty; a light rain jacket is useful. Mandara Hut is a pleasant complex of A-frame huts set in a forest clearing.</p><div class="day-details"><span class="day-detail-chip meal-chip">Meals: Lunch, Dinner</span><span class="day-detail-chip camp-chip">Camp: Mandara Hut (2,720m)</span><span class="day-detail-chip ">Habitat: Rainforest</span></div></div>
+            <img class="day-img" src="" alt="Marangu Gate → Mandara Hut">
+          </div>
+        </div>
+      </div>
+      <div class="day-item">
+        <div class="day-header " onclick="toggleDay(this)">
+          <div class="day-num">02</div>
+          <div class="day-info"><div class="day-title">Mandara Hut → Horombo Hut</div>
+          <div class="day-meta-row"><span class="day-meta-tag">Elevation: 2,720m → 3,720m</span><span class="day-meta-tag">Distance: 12km</span><span class="day-meta-tag">Hiking Time: 5–7 hrs</span></div></div>
+          <div class="day-toggle">+</div>
+        </div>
+        <div class="day-body ">
+          <div class="day-grid">
+            <div><p class="day-desc" style="margin-top:0px;">Leaving the forest behind, today's trail climbs into the heather moorland zone. Giant heather and everlasting flowers line the path as the vegetation thins and views of both Kibo and Mawenzi peaks begin to appear ahead.</p><p class="day-desc" style="margin-top:14px;">The trail is steady and well-graded. Horombo Hut is the largest camp on the mountain and one of the most atmospherically situated — perched on an open ridge at 3,720m with stunning views of the Mawenzi peak and, on clear evenings, the distant plains of Amboseli below.</p><div class="day-details"><span class="day-detail-chip meal-chip">Meals: Breakfast, Lunch, Dinner</span><span class="day-detail-chip camp-chip">Camp: Horombo Hut (3,720m)</span><span class="day-detail-chip ">Habitat: Heather Moorland</span></div></div>
+            <img class="day-img" src=" " alt="Mandara Hut → Horombo Hut">
+          </div>
+        </div>
+      </div>
+      <div class="day-item">
+        <div class="day-header " onclick="toggleDay(this)">
+          <div class="day-num">03</div>
+          <div class="day-info"><div class="day-title">Horombo Hut — Acclimatisation Day</div>
+          <div class="day-meta-row"><span class="day-meta-tag">Elevation: 3,720m (day hike to ~4,000m)</span><span class="day-meta-tag">Distance: ~6km</span><span class="day-meta-tag">Activity: Rest & Acclimatise</span></div></div>
+          <div class="day-toggle">+</div>
+        </div>
+        <div class="day-body ">
+          <div class="day-grid">
+            <div><p class="day-desc" style="margin-top:0px;">An essential rest day at Horombo, strongly recommended for improving summit success. Spend the morning on a gentle hike up towards Zebra Rocks at around 4,000m — a distinctive striped rock formation with sweeping views across the plateau — then descend back to the hut for lunch.</p><p class="day-desc" style="margin-top:14px;">The afternoon is yours: rest, hydrate, eat well, and prepare your summit kit. The evening meal at Horombo's communal dining hall is one of the social highlights of the Marangu experience — sharing stories with climbers at all stages of their journey.</p><div class="day-details"><span class="day-detail-chip meal-chip">Meals: Breakfast, Lunch, Dinner</span><span class="day-detail-chip camp-chip">Camp: Horombo Hut (3,720m)</span><span class="day-detail-chip ">Activity: Zebra Rocks Day Hike</span></div></div>
+            <img class="day-img" src=" " alt="Horombo Hut — Acclimatisation Day">
+          </div>
+        </div>
+      </div>
+      <div class="day-item">
+        <div class="day-header " onclick="toggleDay(this)">
+          <div class="day-num">04</div>
+          <div class="day-info"><div class="day-title">Horombo Hut → Kibo Hut</div>
+          <div class="day-meta-row"><span class="day-meta-tag">Elevation: 3,720m → 4,703m</span><span class="day-meta-tag">Distance: 10km</span><span class="day-meta-tag">Hiking Time: 5–7 hrs</span></div></div>
+          <div class="day-toggle">+</div>
+        </div>
+        <div class="day-body ">
+          <div class="day-grid">
+            <div><p class="day-desc" style="margin-top:0px;">The vegetation disappears today as the trail crosses the barren alpine desert — the Saddle — between the two great peaks of Kibo and Mawenzi. This high-altitude lunar landscape is one of the most extraordinary stretches of the entire climb: stark, windswept, and utterly unlike anything at lower altitudes.</p><p class="day-desc" style="margin-top:14px;">Kibo Hut sits directly below the crater rim in a dramatic bowl at 4,703m. Sleep, eat, and rest from early afternoon. Your guides will wake you around midnight for the summit push. The hut is basic and cold — layer up and organise your summit kit before lying down.</p><div class="day-details"><span class="day-detail-chip meal-chip">Meals: Breakfast, Lunch, Dinner</span><span class="day-detail-chip camp-chip">Camp: Kibo Hut (4,703m)</span><span class="day-detail-chip ">Note: Alpine Desert terrain</span></div></div>
+            <img class="day-img" src=" " alt="Horombo Hut → Kibo Hut">
+          </div>
+        </div>
+      </div>
+      <div class="day-item">
+        <div class="day-header " onclick="toggleDay(this)">
+          <div class="day-num">05</div>
+          <div class="day-info"><div class="day-title">Summit Night → Uhuru Peak → Horombo Hut</div>
+          <div class="day-meta-row"><span class="day-meta-tag">Elevation: 4,703m → 5,895m → 3,720m</span><span class="day-meta-tag">Distance: 22km</span><span class="day-meta-tag">Hiking Time: 14–18 hrs</span></div></div>
+          <div class="day-toggle">+</div>
+        </div>
+        <div class="day-body ">
+          <div class="day-grid">
+            <div><p class="day-desc" style="margin-top:0px;">The summit push departs around midnight, ascending steeply up loose scree toward Gillman's Point (5,681m) on the crater rim. The altitude, cold, and darkness make this the hardest section of the entire climb — but your guides' pace and encouragement carry you through.</p><p class="day-desc" style="margin-top:14px;">From Gillman's Point the crater rim path leads to Uhuru Peak (5,895m) — another 45–60 minutes. The sunrise from the summit is among Africa's greatest natural spectacles. After photographs at the iconic summit sign, the long descent begins — all the way back to Horombo Hut for a well-earned meal and sleep.</p><div class="day-details"><span class="day-detail-chip meal-chip">Meals: All Meals</span><span class="day-detail-chip camp-chip">Camp: Horombo Hut (3,720m)</span><span class="day-detail-chip ">Summit: Uhuru Peak 5,895m</span></div></div>
+            <img class="day-img" src=" " alt="Summit Night → Uhuru Peak → Horombo Hut">
+          </div>
+        </div>
+      </div>
+      <div class="day-item">
+        <div class="day-header " onclick="toggleDay(this)">
+          <div class="day-num">06</div>
+          <div class="day-info"><div class="day-title">Horombo Hut → Marangu Gate → Arusha</div>
+          <div class="day-meta-row"><span class="day-meta-tag">Elevation: 3,720m → 1,860m</span><span class="day-meta-tag">Distance: 20km</span><span class="day-meta-tag">Hiking Time: 5–7 hrs</span></div></div>
+          <div class="day-toggle">+</div>
+        </div>
+        <div class="day-body ">
+          <div class="day-grid">
+            <div><p class="day-desc" style="margin-top:0px;">The final descent through moorland and forest back to Marangu Gate. The forest feels richer and warmer than it did on the way up. Your certificate is presented at the gate — physical proof that you stood on the Roof of Africa.</p><p class="day-desc" style="margin-top:14px;">Tips are given to your mountain crew here. Your WildRush vehicle then transfers you to Arusha for a hot shower and a celebratory dinner. You've earned it.</p><div class="day-details"><span class="day-detail-chip meal-chip">Meals: Breakfast, Lunch</span><span class="day-detail-chip ">Summit Certificate awarded</span><span class="day-detail-chip ">Transfer to Arusha</span></div></div>
+            <img class="day-img" src=" 66" alt="Horombo Hut → Marangu Gate → Arusha">
+          </div>
+        </div>
+      </div></div>
+  </div>
+</section>
+
+<section id="inclusions">
+  <div class="container">
+    <div class="section-tag">What's Included</div>
+    <h2 class="section-title">Everything You<br><em>Need to Summit</em></h2>
+    <div class="inc-grid">
+      <div class="inc-box"><div class="inc-box-title">Included in Your Package</div><ul class="inc-list"><li>All park and hut fees (KINAPA)</li><li>Professional KINAPA-certified lead guide and assistant guides</li><li>Experienced porter team</li><li>Camp cook and full catering</li><li>All meals on the mountain (Breakfast, Lunch, Dinner)</li><li>Hot drinks at all huts (tea, coffee, hot chocolate)</li><li>Hut accommodation (bunk beds and mattresses — bring sleeping bag)</li><li>Portable toilet facilities</li><li>Pulse oximeter and health monitoring twice daily</li><li>Emergency oxygen and evacuation coordination</li><li>KINAPA summit certificate</li><li>Airport and hotel transfers (Arusha / Moshi)</li><li>1 night pre-climb accommodation in Arusha (breakfast)</li></ul></div>
+      <div class="inc-box"><div class="inc-box-title">Not Included</div><ul class="inc-list exc-list"><li>International flights and Tanzania visa ($50 USD)</li><li>Travel insurance (must cover altitude to 6,000m)</li><li>Personal sleeping bag and liner</li><li>Personal climbing gear</li><li>Rental gear available in Arusha on request</li><li>Gratuities for guides and porters</li><li>Beverages beyond hot drinks</li><li>Diamox altitude medication (consult doctor)</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="packing">
+  <div class="container">
+    <div class="section-tag">Preparation</div>
+    <h2 class="section-title">What to Bring<br><em>Up the Mountain</em></h2>
+    <div class="packing-grid">
+      <div class="pack-category"><div class="pack-cat-title">Clothing &amp; Layers</div><ul class="pack-list">
+        <li>Waterproof jacket and trousers (shell layer)</li><li>Insulated down jacket (-20°C rated minimum)</li><li>Midlayer fleece or softshell jacket</li>
+        <li>Moisture-wicking base layer tops ×3</li><li>Warm trekking trousers ×2</li><li>Thermal leggings / baselayer bottoms</li>
+        <li>Gaiters (useful on lower muddy trail)</li><li>Warm gloves + liner gloves</li><li>Balaclava or warm hat</li>
+        <li>Sun hat for daytime hiking</li><li>Warm hiking socks ×5 pairs minimum</li>
+      </ul></div>
+      <div class="pack-category"><div class="pack-cat-title">Footwear &amp; Gear</div><ul class="pack-list">
+        <li>Well broken-in waterproof hiking boots</li><li>Camp sandals for evenings</li><li>Trekking poles (highly recommended)</li>
+        <li>Headtorch + spare batteries (essential for summit night)</li><li>Daypack 20–30L for personal items</li>
+        <li>Duffel bag for porters (max 15kg)</li><li>Sleeping bag rated to -15°C minimum</li>
+        <li>Sleeping bag liner (adds warmth)</li><li>Sunglasses UV400 rated</li>
+      </ul></div>
+      <div class="pack-category"><div class="pack-cat-title">Health &amp; Essentials</div><ul class="pack-list">
+        <li>Water bottles or hydration bladder (3L capacity)</li><li>Water purification tablets (backup)</li>
+        <li>High-factor sunscreen SPF 50+</li><li>Lip balm with SPF</li><li>Blister plasters and basic first aid</li>
+        <li>Diamox (acetazolamide) — consult your doctor</li><li>Ibuprofen and paracetamol</li>
+        <li>Energy snacks (nuts, bars, chocolate)</li><li>Camera with extra battery pack</li>
+        <li>Cash for gratuities (USD recommended)</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="book">
+  <div class="container">
+    <h2 class="book-title">Ready to Climb<br><em>the Marangu Route?</em></h2>
+    <p class="book-sub">Our Kilimanjaro specialists in Arusha are ready to build your personalised climb package. We respond within 24 hours, 7 days a week.</p>
+    
+    <div class="book-actions">
+      <a href="updated.html#contact" class="btn-book-main">Book This Route</a>
+      <a href="updated.html#packages" class="btn-ghost-main">View Other Routes</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-copy">© 2025 WildRush Safaris Ltd. All rights reserved. Arusha, Tanzania.</div>
+      <div class="footer-links"><a href="updated.html">Home</a><a href="updated.html#packages">All Routes</a><a href="updated.html#contact">Contact</a></div>
+    </div>
+  </div>
+</footer>
+<script>
+function toggleDay(header) {
+  const body = header.nextElementSibling;
+  const isActive = header.classList.contains('active');
+  document.querySelectorAll('.day-header').forEach(h => { h.classList.remove('active'); h.nextElementSibling.classList.remove('open'); });
+  if (!isActive) { header.classList.add('active'); body.classList.add('open'); }
+}
+</script>
+</body>
+</html>
